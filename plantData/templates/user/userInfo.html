@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Home of User</title>
+<link rel="stylesheet" type="text/css" href="/static/css/table.css" />
+<style>
+.center{margin:auto;width:55%;background:url(/static/bgPic/bj1.gif);padding: 1.5cm}
+table.table1{
+	position:relative;
+	left:25%;
+	top:30px;	
+    width:40%;
+    height:20%}
+.text2{color:#090;height:40px;width:100%;padding: 0.1cm}
+.text3{border-style: groove;
+	position:relative;	
+    width:100%;
+    height:40px}
+h1{font-size:60px;font-family:STKaiti;}
+</style>
+</head>
+
+{% load staticfiles %}<body background="/static/bgPic/main_bj.gif">
+    <h1 align="center"><b>植物识别系统</b></h1>
+    <div class="center" >  
+    	<p>
+			<h2>用户资料</h2>
+		</p>
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>         
+        <table class="text3">
+        	<tr>    	
+                <td><button type="button" class="text2" onclick="window.location.assign('/plant/user/addPhoto/{{userId}}/')">主界面</button></td>
+                <td><button type="button" class="text2" onclick="window.location.assign('/plant/user/lookHist/{{userId}}/')">查看问题</button></td>
+                <td><button type="button" class="text2">个人资料</button></td>
+            </tr>
+        </table>
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>         
+<br />        
+<table class="bordered">
+    <tr>
+        <th>用户名</th>        
+        <td>{{userData.user_name}}</td>
+    </tr>
+    <tr>
+        <th>性别</th>        
+        <td>
+		{{userData.gender}}
+        </td>
+    </tr>  
+    <tr>
+        <th>真实姓名</th>        
+        <td>
+		{{userData.name}}
+        </td>
+    </tr>  
+    <tr>
+        <th>出生日期</th>        
+        <td>
+		{{userData.birth}}
+        </td>
+    </tr>                
+</table>
+
+    </div>
+</body>
+</html>

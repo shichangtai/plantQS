@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专家端页面</title>
+<script></script>
+<link rel="stylesheet" type="text/css" href="/static/css/search.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/table.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/button.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/userQues.css" />
+<style>
+.center{margin:auto;width:55%;background:url(/static/bgPic/bj4.gif);padding: 1.5cm}
+input.text{background-color:#00FF00}
+input.text2{color:#090;height:40px;width:100%;padding: 0.1cm}
+.text3{border-style: groove;
+	position:relative;	
+    width:100%;
+    height:40px}
+img.small {height: 80px}
+h1{font-size:60px;font-family:STKaiti;}
+</style>
+</head>
+
+{% load staticfiles %}<body background="/static/bgPic/main_bj.gif"">
+<h1 align="center"><b>植物识别系统</b></h1>
+<div class="center">
+<table class="text3">
+<tr>
+<td><input type="button" value="待答问题" onclick="window.location='/plant/expert/user/{{exId}}/0/'" class="text2"></td>
+<td><input type="button" value="解答记录" onclick="window.location='/plant/expert/user/{{exId}}/expHist/'" class="text2"></td>
+<td><input type="button" value="个人资料" onclick="window.location='/plant/expert/user/{{exId}}/expInfo/'" class="text2"></td>
+</tr>
+</table>
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>    
+<div>
+<table class="bordered">
+    <tr>
+        <th></th>        
+        <th>用户问题</th>
+        <th>植物图片</th>
+        <th>提问时间</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td><a href="/plant/expert/user/{{exId}}/{{lastNum}}/" class="button green bigrounded">上一个问题</a> </td>        
+        <td>
+        {{target.describe}}
+        </td>
+        <td>
+        {%load staticfiles%}<img src="{{targetAdd}}" height="80"/>      
+        </td>
+        <td>{{target.que_time}}</td>
+        <td><a href="/plant/expert/user/{{exId}}/{{nextNum}}/" class="button green bigrounded">下一个问题</a> </td>
+    </tr>         
+</table>
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+</div>  
+        <br />       
+{%if nowNum%}
+<form action="/plant/expert/user/{{exId}}/{{nowNum}}/" method="get">
+{%else%}
+<form action="/plant/expert/user/{{exId}}/0/" method="get">
+{%endif%}
+<div class="container">
+<input type="text" name="plantName" value="请输入植物名称" class="rounded">
+<input type="image" src="/static/bgPic/btn_search_box.gif" class="search" alt="搜索"/>
+</div>
+<br />
+{%if error%}
+<ul>
+{%for x in error%}
+<li><p style="color:red">{{x}}</p></li>
+{%endfor%}
+</ul>
+{%endif%}
+</form> 	
+
+<form action="" method="post" name="answerChoice">
+{% csrf_token %}
+<table class="bordered">
+    <tr>
+        <th>#</th>        
+        <th>检索结果</th>
+        <th>详细信息</th>
+    </tr>
+    <tr>
+        <td>1</td>        
+        <td>
+        {%if name1%}
+        {{name1}}
+        {%endif%}
+        </td>
+        <td>
+        {%if name1%}
+<button type="button" class="button white medium" onclick="window.location='lookpic/{{id1}}/'">显示图片和答案</button>
+        <input type="radio" name="ans" value="0" />
+        {%endif%}        
+        </td>
+    </tr>        
+    <tr>
+        <td>2</td>        
+        <td>
+        {%if name2%}
+        {{name2}}
+        {%endif%}
+        </td>
+        <td>
+        {%if name2%}
+<button type="button" class="button white medium" onclick="window.location='lookpic/{{id2}}/'">显示图片和答案</button>      
+        <input type="radio" name="ans" value="1" />
+        {%endif%}        
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>        
+        <td>
+        {%if name3%}
+        {{name3}}
+        {%endif%}
+        </td>
+        <td>
+        {%if name3%}
+<button type="button" class="button white medium" onclick="window.location='lookpic/{{id3}}/'">显示图片和答案</button>
+        <input type="radio" name="ans" value="2" />
+        {%endif%}        
+        </td>
+    </tr>    
+</table>
+
+	<br />
+
+
+<fieldset tabindex="0" class='radioGroup'> 
+<legend>答案的确信度:</legend> 
+<input id='g1o1' name="group1" value="h" checked type="radio"> 
+<label for='g1o1'>非常确定</label> 
+<input id='g1o2' name="group1" value="m" type="radio"> 
+<label for='g1o2'>一般确定</label> 
+<input id='g1o3' name="group1" value="l" type="radio"> 
+<label for='g1o3'>不太确定</label>
+&nbsp&nbsp&nbsp<button type="submit" class="button green bigrounded tijiao">推送答案</button>
+{%if inform%}
+<p style="color:red">{{inform}}</p>
+{%endif%}  
+</fieldset>
+</form>
+    <p>
+    如果您没有在数据库中找到满意的答案，请手动输入答案
+    </p>
+    <button type="button" class="button orange" onclick="window.location.assign('backLogin/')">新增答案</button>
+    </div>
+       
+</body>
+</html>

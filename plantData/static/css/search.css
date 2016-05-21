@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */  
+input.rounded {
+	border: 2px;
+	width: 190px; 
+	height: 25px; 
+	padding: 3px 5px; 
+	font-size: 85%;  
+	color: #391; 
+}
+ .search{
+	background-image:url(/static/bgPic/btn_search_box.gif);
+	background-repeat:no-repeat;
+	position:absolute;
+	width:30px;
+	height:30px;                
+	top:0px;                
+	left:170px;                
+	z-index:99;
+ }
+.container{                
+position:relative;        
+}
+
+
+
+

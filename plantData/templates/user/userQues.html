@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Home of User</title>
+<link rel="stylesheet" type="text/css" href="/static/css/newUser.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/button.css" />
+<style>
+.center{margin:0 10%}
+button.text2{color:#090;height:40px;width:150px;padding: 0.1cm}
+table.text3{
+    width:100%;
+    height:30%}
+img.small {height: 80px}
+h1{font-size:60px;font-family:STKaiti;}
+</style>
+</head>
+
+{% load staticfiles %}<body background="/static/bgPic/main_bj.gif">
+     
+<div class="container">     
+<form action="/plant/user/addPhoto/{{userId}}/submit/" enctype="multipart/form-data" method="post" id="contact">
+{% csrf_token %}
+<h3>用户问题提交</h3>
+<h4>请提交您要询问的植物图片及相关问题</h4> 
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+<br />
+    <fieldset>
+      <h2>上传图片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name = "picfile" ></h2>
+    </fieldset>
+    <fieldset>
+      <input placeholder="请输入您的问题（非必填项）" type="text" name="message" />
+    </fieldset>
+    <fieldset>
+      <button type="submit" id="contact-submit">提交</button>
+    </fieldset>
+    <br/> 
+<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+    <br/>     
+    {%load staticfiles%}<img src="/static/{{img_name}}" alt="提交成功后您可在此看到已经上传的图片" height="80"/>
+    <p style="color:red">{{inform}}</p>        
+	<p style="color:red">{{message}}</p>
+<div class='center'>
+<table class="text3">
+        	<tr>    	
+                <td><button type="button" class="button orange bigrounded" onclick="window.location.assign('/plant/user/lookHist/{{userId}}/')">查看问题</button></td>
+                <td><button type="button" class="button blue ">主界面</button></td>
+                <td><button type="button" class="button orange bigrounded" onclick="window.location.assign('/plant/user/lookInfo/{{userId}}/')">个人资料</button></td>
+            </tr>
+</table>
+</div>     
+</form>
+</div>
+
+
+
+
+</body>
+</html>
+
+<!--
+    <form action="/plant/user/addPhoto/{{userId}}/" enctype="multipart/form-data" method="post">
+    	{% csrf_token %}
+        请选择上传的图片<br/><br/>
+        <input type="file" name = "picfile" >
+        <br/><br/>
+        <input type="text" name="message" value="请输入您的问题（非必填项）">
+        <button value="提交" type="submit" >提交</button>
+	</form>
+    <br />
+    {%load staticfiles%}<img src="/static/{{img_name}}" alt="已上传的图片" height="80"/>
+    <p style="color:red">{{message}}</p> 
+<table class="text3">
+<tr>    	
+<td><button type="button" class="text2 button blue bigrounded">主界面</button></td>
+<td><button type="button" class="text2 button orange bigrounded" onclick="window.location.assign('/plant/user/lookHist/{{userId}}/')">查看问题</button></td>
+<td><button type="button" class="text2 button orange bigrounded" onclick="window.location.assign('/plant/user/lookInfo/{{userId}}/')">个人资料</button></td>
+</tr>
+</table> 
+-->

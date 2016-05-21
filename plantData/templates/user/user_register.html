@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户注册</title>
+<link rel="stylesheet" type="text/css" href="/static/css/button.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/newRegister.css" />
+</head>
+<body background="/static/bgPic/main_bj.gif">    
+<div class="container">     
+<form  method="post" action="/plant/user/user_register/regi_Info/" id="contact">
+{% csrf_token %}
+<h3>用户注册</h3>
+<h4>性别请选则M/F，带*号的为必填信息</h4> 
+    <fieldset>
+      <input placeholder="用户名*" type="text" name="regiUserName" >
+    </fieldset>
+    <fieldset>
+      <input placeholder="密码*" type="text" name="regiPassword" />
+    </fieldset>
+    <fieldset>
+      <input placeholder="性别*" type="text" name="regiGender" />
+    </fieldset>
+    <fieldset>
+      <input placeholder="出生日期" type="text" name="regiBirth" />
+    </fieldset>
+    <fieldset>
+      <input placeholder="真实姓名" type="text" name="regiRealName" />
+    </fieldset>
+    <fieldset>
+      <button type="submit" id="contact-submit" value="register">注册</button>
+    </fieldset>
+    <fieldset>
+      <button type="button" id="contact-button" onclick="window.location.assign('backLogin/')">返回</button>
+    </fieldset>
+    <p style="color:red">{{inform}}</p>        
+</form>
+</div>   
+</body>
+</html>
+
+<!--
+<body background="/static/bgPic/main_bj.gif">
+	<h1 align="center">用户注册</h1>
+	<form class="shuru" method="post" action="/plant/user/user_register/regi_Info/">
+    	{% csrf_token %}
+        <b>用户名*</b>&nbsp
+        <input type="text" name="regiUserName"  style="height:35px; font-size:130%; " >
+        &nbsp <b>真实姓名</b>&nbsp
+       	<input type="text" name="regiRealName"  style="height:35px;  font-size:130%;" />
+       	<br /><br /><b>密码*</b>&nbsp&nbsp
+       	<input type="text" name="regiPassword"  style="height:35px;  font-size:130%;" />
+        &nbsp <b>出生日期</b>&nbsp
+       	<input type="text" name="regiBirth"  style="height:35px;  font-size:130%;" />       
+        <br /><br /><b>性别*</b>&nbsp&nbsp
+       	<input type="text" name="regiGender"  style="height:35px;  font-size:130%;" />
+        &nbsp <b>性别请选则M/F，带*号的为必填信息</b>
+        <br /><br />
+        <p style="color:red">{{inform}}</p>
+    	<input type="submit" value="register" class="button green bigrounded tijiao" />&nbsp&nbsp&nbsp&nbsp
+        <button type="button" class="button green bigrounded tijiao" onclick="window.location.assign('backLogin/')">return</button>
+	</form>
+-->

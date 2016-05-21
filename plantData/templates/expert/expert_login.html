@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专家用户登录</title>
+<link rel="stylesheet" type="text/css" href="/static/css/button.css" />
+<style type="text/css">
+        #box
+        {
+               	background-color:Chartreuse;
+				height:400px;
+				width:1000px;
+				overflow: auto;
+                position:absolute;
+                top: 100px; 
+				left: 200px; 
+        }
+		.bottom
+		{
+			width:100%;
+			position:fixed;
+			left:0;
+			bottom:0;
+			height:30px;
+			background-color:green;
+			font-family:Cursive;
+			color:white;
+			font-size:130%	
+		}
+		.shuru
+		{
+			position:absolute;
+			top: 190px;
+			left:300px;
+		}
+		.tijiao
+		{
+			font-family:Cursive;
+			font-size:20px;
+			height:40px;
+			width:250px;
+			position:relative;
+			right:1%;
+		}
+		h1{position:absolute;top:150px;left:510px;font-family:Georgia;font-size:34px;}
+		h2{position:absolute;top:200px;left:770px;font-family:Cursive;font-size:24px;}
+</style>
+</head >
+{% load staticfiles %}<body background="/static/bgPic/tree.jpg">
+    <div id="box">
+        {%if errors%}
+            <ul>
+           		{%for x in errors%}
+                <li><p style="color:red">{{x}}</p></li>
+                {%endfor%}
+            </ul>
+        {%endif%}
+    	<form class="shuru" method="get" action="">
+        	<b>User:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        	<input type="text" name="txtExpertName" style="height:35px; font-size:130%;" >
+        	<br /><br /><b>Password: 
+        	<input type="password" name="expertPassword" style="height:35px;  font-size:130%;" />
+	    	<br /><br />
+            <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+	    	<input type="submit" value="log in" class="button green tijiao"/>&nbsp&nbsp&nbsp&nbsp  
+        </form>
+
+    </div>
+	<div>
+		<h1>Plant Q&A System</h1>
+		<h2>Expert Port</h2>
+	</div>
+	<div class="bottom" align="center">
+    	Contact: 010-XXXXXXX      
+    </div>
+</body>
+</html>
